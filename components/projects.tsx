@@ -26,14 +26,14 @@ const items = [
 
 export function Projects() {
   return (
-    <section aria-labelledby="projects-title" className="py-16 md:py-20 bg-secondary/40">
+    <section aria-labelledby="projects-title" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-4">
         <h2 id="projects-title" className="text-3xl md:text-4xl font-semibold">
           Projects
         </h2>
         <div className="mt-8 grid md:grid-cols-3 gap-6">
           {items.map((p) => (
-            <Card key={p.title} className="overflow-hidden reveal">
+            <Card key={p.title} className="overflow-hidden reveal hover-glow">
               <CardHeader className="p-0">
                 <div
                   className="h-40 bg-cover bg-center"

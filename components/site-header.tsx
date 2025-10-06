@@ -19,7 +19,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-background/70 border-b">
       <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-        <Link href="#" aria-label="D-LUX Detailing Home" className="flex items-center gap-3">
+        <Link href="#" aria-label="D-LUX Detailing Home" className="flex items-center gap-3 hover-glow">
           <Image
             src="/img/logo-dlux.jpeg"
             alt="D-LUX Detailing logo"
@@ -32,35 +32,26 @@ export function SiteHeader() {
         </Link>
         <nav aria-label="Primary">
           <ul className="hidden md:flex items-center gap-6 text-sm">
-            <li>
-              <a href="#services" className="hover:underline underline-offset-4">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#process" className="hover:underline underline-offset-4">
-                Process
-              </a>
-            </li>
-            <li>
-              <a href="#gallery" className="hover:underline underline-offset-4">
-                Before/After
-              </a>
-            </li>
-            <li>
-              <a href="#pricing" className="hover:underline underline-offset-4">
-                Pricing
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="hover:underline underline-offset-4">
-                Contact
-              </a>
-            </li>
+            {[
+              { href: "#services", label: "Services" },
+              { href: "#process", label: "Process" },
+              { href: "#gallery", label: "Before/After" },
+              { href: "#pricing", label: "Pricing" },
+              { href: "#contact", label: "Contact" },
+            ].map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="hover-glow px-3 py-1.5 rounded-md transition-all duration-300 ease-out hover:bg-black/60 hover:scale-105"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
         <div className="hidden md:block">
-          <Button asChild className="bg-primary text-primary-foreground hover:brightness-110">
+          <Button asChild className="bg-primary text-primary-foreground hover-glow">
             <a href="tel:+15055570590" aria-label="Call D-LUX Detailing">
               (505) 557-0590
             </a>
