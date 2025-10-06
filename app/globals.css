@@ -13,23 +13,23 @@
 :root {
   --background: #0e0f11; /* exact charcoal tone from logo background */
   --foreground: #f2f3f5; /* off-white for strong contrast on charcoal */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card: #1a1c1f; /* enforce dark graphite cards/sections */
+  --card-foreground: #f2f3f5; /* off-white for strong contrast on charcoal */
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   --primary: oklch(0.205 0 0);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --secondary: #16181b; /* enforce dark graphite cards/sections */
+  --secondary-foreground: #f2f3f5; /* off-white for strong contrast on charcoal */
+  --muted: #121315; /* enforce dark graphite cards/sections */
+  --muted-foreground: #8a9096; /* steel for muted contrast */
+  --accent: #1f2226; /* enforce dark graphite cards/sections */
+  --accent-foreground: #f2f3f5; /* off-white for strong contrast on charcoal */
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: #2a2d31; /* charcoal for borders */
+  --input: #2a2d31; /* charcoal for input backgrounds */
+  --ring: #8a9096; /* steel for ring color */
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -48,24 +48,24 @@
 
 .dark {
   --background: #0e0f11; /* exact charcoal tone from logo background */
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
+  --foreground: #f2f3f5; /* off-white for strong contrast on charcoal */
+  --card: #1a1c1f; /* keep dark mode strictly charcoal/graphite */
+  --card-foreground: #f2f3f5; /* off-white for strong contrast on charcoal */
   --popover: oklch(0.145 0 0);
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.985 0 0);
   --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --secondary: #16181b; /* keep dark mode strictly charcoal/graphite */
+  --secondary-foreground: #f2f3f5; /* off-white for strong contrast on charcoal */
+  --muted: #121315; /* keep dark mode strictly charcoal/graphite */
+  --muted-foreground: #8a9096; /* steel for muted contrast */
+  --accent: #1f2226; /* keep dark mode strictly charcoal/graphite */
+  --accent-foreground: #f2f3f5; /* off-white for strong contrast on charcoal */
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
+  --border: #2a2d31; /* charcoal for borders */
+  --input: #2a2d31; /* charcoal for input backgrounds */
+  --ring: #8a9096; /* steel for ring color */
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -137,7 +137,19 @@
     }
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground; /* ensure global charcoal background applies */
+  }
+
+  /* global link styling: grey links with subtle white glow on hover */
+  a[href]:not(.no-link-style) {
+    color: var(--color-muted-foreground);
+    text-underline-offset: 4px;
+    transition: color .2s ease, text-shadow .2s ease, filter .2s ease;
+  }
+  a[href]:not(.no-link-style):hover {
+    color: var(--color-foreground);
+    text-shadow: 0 0 10px color-mix(in oklab, var(--color-foreground) 65%, transparent);
+    filter: brightness(1.03);
   }
 }
 
@@ -172,4 +184,14 @@
 .reveal.in {
   opacity: 1;
   transform: none;
+}
+
+/* metallic glow utility for hover on dark UI */
+.hover-glow {
+  transition: box-shadow .25s ease, transform .25s ease, filter .25s ease;
+}
+.hover-glow:hover {
+  box-shadow: 0 0 24px -8px rgba(201, 204, 209, 0.35);
+  filter: brightness(1.05);
+  transform: translateY(-1px);
 }
