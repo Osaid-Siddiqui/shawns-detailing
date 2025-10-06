@@ -2,26 +2,35 @@ import { Button } from "@/components/ui/button"
 
 export function Hero() {
   return (
-    <section aria-label="Hero" className="relative isolate overflow-hidden">
+    <section aria-label="Hero" className="relative isolate overflow-hidden min-h-[100svh]">
       {/* Background moving image */}
       <div
-        className="absolute inset-0 bg-[url('/img/hero-large.jpg')] bg-cover bg-center motion-safe:hero-drift"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat motion-safe:hero-drift"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1920&q=80')",
+        }}
         aria-hidden="true"
       />
-      <div className="relative mx-auto max-w-6xl px-4 py-24 sm:py-28 md:py-32">
-        <div className="max-w-2xl reveal">
-          <h1 className="text-balance text-4xl md:text-6xl font-semibold leading-tight">
+      <div className="relative mx-auto max-w-6xl px-4 min-h-[100svh] flex items-center">
+        <div className="max-w-2xl reveal text-gray-100">
+          <h1
+            className="text-balance text-4xl md:text-6xl font-semibold leading-tight text-black"
+            style={{
+              textShadow: "0 0 6px rgba(255,255,255,0.75)",
+            }}
+          >
             Experience the luxury your car deserves
           </h1>
-          <p className="mt-4 text-pretty text-muted-foreground md:text-lg">
+          <p className="mt-4 text-pretty md:text-lg text-white drop-shadow">
             Cinematic mobile detailing in Albuquerque and surrounding areas — exterior & interior cleaning, full
             detailing, ceramic coating, paint correction, and headlight restoration.
           </p>
           <div className="mt-6 flex items-center gap-3">
-            <Button asChild className="bg-primary text-primary-foreground hover:brightness-110">
+            <Button asChild className="bg-primary text-primary-foreground hover-glow">
               <a href="tel:+15055570590">Call Now</a>
             </Button>
-            <Button variant="secondary" asChild>
+            <Button variant="secondary" asChild className="hover-glow">
               <a href="#contact">Get a Free Quote</a>
             </Button>
           </div>

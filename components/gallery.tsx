@@ -1,33 +1,19 @@
-const pairs = [
+"use client"
+
+import Image from "next/image"
+
+const gallery = [
   {
     before: "/img/beforeafter/1-before-large.jpg",
     after: "/img/beforeafter/1-after-large.jpg",
-    caption: "Interior deep clean and leather care.",
   },
   {
     before: "/img/beforeafter/2-before-large.jpg",
     after: "/img/beforeafter/2-after-large.jpg",
-    caption: "Exterior wash and paint decontamination.",
   },
   {
     before: "/img/beforeafter/3-before-large.jpg",
     after: "/img/beforeafter/3-after-large.jpg",
-    caption: "Headlight restoration and lens sealing.",
-  },
-  {
-    before: "/img/beforeafter/4-before-large.jpg",
-    after: "/img/beforeafter/4-after-large.jpg",
-    caption: "Engine bay freshen and dressing.",
-  },
-  {
-    before: "/img/beforeafter/5-before-large.jpg",
-    after: "/img/beforeafter/5-after-large.jpg",
-    caption: "Paint correction for swirl removal.",
-  },
-  {
-    before: "/img/beforeafter/6-before-large.jpg",
-    after: "/img/beforeafter/6-after-large.jpg",
-    caption: "Ceramic coating hydrophobic finish.",
   },
 ]
 
@@ -38,25 +24,32 @@ export function Gallery() {
         <h2 id="gallery-title" className="text-3xl md:text-4xl font-semibold">
           Before & After
         </h2>
-        <div className="mt-6 grid md:grid-cols-2 gap-6">
-          {pairs.map((p, i) => (
-            <figure key={i} className="reveal">
-              <div className="grid grid-cols-2 gap-2">
-                <img
-                  src={p.before || "/placeholder.svg"}
+        <div className="mt-8 grid md:grid-cols-2 gap-8">
+          {gallery.map((item, idx) => (
+            <div key={idx} className="grid grid-cols-2 gap-2 reveal">
+              <div className="relative w-full h-48 md:h-64 rounded overflow-hidden">
+                <Image
+                  src={item.before}
                   alt="Before detailing"
-                  className="w-full h-40 object-cover rounded-md"
-                  loading="lazy"
+                  fill
+                  className="object-cover"
                 />
-                <img
-                  src={p.after || "/placeholder.svg"}
-                  alt="After detailing"
-                  className="w-full h-40 object-cover rounded-md"
-                  loading="lazy"
-                />
+                <span className="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">
+                  Before
+                </span>
               </div>
-              <figcaption className="mt-2 text-sm text-muted-foreground">{p.caption}</figcaption>
-            </figure>
+              <div className="relative w-full h-48 md:h-64 rounded overflow-hidden">
+                <Image
+                  src={item.after}
+                  alt="After detailing"
+                  fill
+                  className="object-cover"
+                />
+                <span className="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">
+                  After
+                </span>
+              </div>
+            </div>
           ))}
         </div>
       </div>

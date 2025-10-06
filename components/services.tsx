@@ -71,7 +71,7 @@ export function Services() {
         </p>
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s) => (
-            <Card key={s.id} className="overflow-hidden reveal group">
+            <Card key={s.id} className="overflow-hidden reveal group hover-glow dark:bg-gray-800">
               <CardHeader className="p-0">
                 <div
                   className="h-40 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
@@ -91,7 +91,7 @@ export function Services() {
                   <span className="font-medium">{s.price}</span>
                 </div>
                 <div className="mt-5">
-                  <Button asChild size="sm" className="bg-primary text-primary-foreground">
+                  <Button asChild size="sm" className="bg-primary text-primary-foreground hover-glow">
                     <a href="#contact" aria-label={`Get quote for ${s.title}`}>
                       Get a Quote
                     </a>
